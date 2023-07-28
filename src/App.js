@@ -24,7 +24,6 @@ function App() {
     dispatch(refreshToken())
 
   }, [dispatch])
-  console.log('auth?.user?.category', auth?.user?.category);
   return (
     <>
       <Router>
@@ -39,8 +38,8 @@ function App() {
                 : <Sellerhomepage />)
               : <Login />} />
           <Route exact path='/signup' element={<Signup />} />
-          <Route exact path='/create' element={<Create />} />
-          <Route exact path='/bids' element={<Bids />} />
+          <Route exact path='/create' element={auth?.user?.category === 1 && <Create />} />
+          <Route exact path='/bids' element={auth?.user?.category === 0 && <Bids />} />
 
 
         </Routes>
